@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PollApp.Domain.Entities;
+using PollApp.Domain.Interfaces.Services;
 
 namespace PollApp.API.Controllers
 {
@@ -11,10 +13,29 @@ namespace PollApp.API.Controllers
     [ApiController]
     public class PollController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        #region Fields
+
+        IPollService _pollService;
+
+        #endregion
+
+        #region Constructors
+
+        public PollController(IPollService pollService)
         {
-            return Ok("Teste");
+            _pollService = pollService;
         }
+
+        #endregion
+
+        #region Methods
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Poll>> Get()
+        {
+            return Ok(_pollService.Get());
+        }
+
+        #endregion
     }
 }

@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PollApp.API.Controllers;
+using PollApp.Domain.Entities;
+using PollApp.Domain.Interfaces.Services;
+using System.Collections.Generic;
 using Xunit;
 
 namespace PollApp.Test.API
@@ -9,6 +12,7 @@ namespace PollApp.Test.API
         #region Properties
 
         PollController pollController;
+        IPollService pollService;
 
         #endregion
 
@@ -16,7 +20,8 @@ namespace PollApp.Test.API
 
         public PollControllerTest()
         {
-            pollController = new PollController();
+            pollService = new PollServiceFake();
+            pollController = new PollController(pollService);
         }
 
         #endregion
@@ -28,7 +33,9 @@ namespace PollApp.Test.API
         {
             var ret = pollController.Get();
 
-            Assert.IsType<OkObjectResult>(ret);
+            var result = Assert.IsType<OkObjectResult>(ret.Result);
+            var value = Assert.IsType<List<Poll>>(result.Value);
+            Assert.Equal(2, value.Count);
         }
 
         #endregion

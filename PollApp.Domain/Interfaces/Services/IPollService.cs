@@ -1,7 +1,7 @@
 ﻿using PollApp.Domain.Entities;
 using System.Collections.Generic;
 
-namespace PollApp.Domain.Interfaces
+namespace PollApp.Domain.Interfaces.Services
 {
     public interface IPollService
     {

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PollApp.API\PollApp.API.csproj" />
+    <ProjectReference Include="..\PollApp.Domain\PollApp.Domain.csproj" />
   </ItemGroup>
 
 </Project>
