@@ -13,15 +13,18 @@ namespace PollApp.Domain.DTOs.Poll
 
         public string Poll_Description { get; set; }
 
-        public IEnumerable<PollOptionResponse> Options { get; set; }
+        public IEnumerable<GetPollOptionResponse> Options { get; set; }
 
         public static explicit operator GetPollResponse(Entities.Poll poll)
         {
+            if (poll == null)
+                return null;
+
             return new GetPollResponse()
             {
                 Poll_Id = poll.ID,
                 Poll_Description = poll.Description,
-                Options = poll.Options.ToList().Select(entity => (PollOptionResponse)entity)
+                Options = poll.Options.ToList().Select(entity => (GetPollOptionResponse)entity)
             };
         }
     }
