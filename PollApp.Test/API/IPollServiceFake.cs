@@ -33,6 +33,13 @@ namespace PollApp.Test.API
                     new PollOption(id: 6, poll: null, description: "Amarelo" ),
                     new PollOption(id: 7, poll: null, description: "Roxo" ),
                     new PollOption(id: 8, poll: null, description: "Vermelho" ),
+                }),
+                new Poll(id: 3, description: "O que iria fazer nesta situação?", pollOptions: new List<PollOption>()
+                {
+                    new PollOption(id: 4, poll: null, description: "Dormir" ),
+                    new PollOption(id: 5, poll: null, description: "Gritar" ),
+                    new PollOption(id: 6, poll: null, description: "Fugir" ),
+                    new PollOption(id: 7, poll: null, description: "Cantar" ),
                 })
             };
         }
@@ -53,7 +60,7 @@ namespace PollApp.Test.API
 
         public GetPollResponse GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return (GetPollResponse)_polls.FirstOrDefault(c => c.ID == id);
         }
 
         public void Remove(int id)

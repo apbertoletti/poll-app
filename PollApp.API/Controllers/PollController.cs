@@ -36,6 +36,18 @@ namespace PollApp.API.Controllers
             return Ok(_pollService.Get());
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public ActionResult<Poll> GetById(int id)
+        {
+            var result = _pollService.GetById(id);
+
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
+        }
+
         #endregion
     }
 }
