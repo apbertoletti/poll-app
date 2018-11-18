@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using PollApp.Domain.DTOs.Poll;
 using PollApp.Domain.Entities;
 using PollApp.Domain.Interfaces.Services;
 
@@ -34,12 +36,12 @@ namespace PollApp.Domain.Services
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Poll> Get()
+        public IEnumerable<GetPollResponse> Get()
         {
-            return _polls;
+            return _polls.ToList().Select(entidade => (GetPollResponse)entidade);
         }
 
-        public Poll GetById(int id)
+        public GetPollResponse GetById(int id)
         {
             throw new System.NotImplementedException();
         }

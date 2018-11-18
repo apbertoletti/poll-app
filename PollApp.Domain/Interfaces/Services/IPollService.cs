@@ -1,13 +1,14 @@
-﻿using PollApp.Domain.Entities;
+﻿using PollApp.Domain.DTOs.Poll;
+using PollApp.Domain.Entities;
 using System.Collections.Generic;
 
 namespace PollApp.Domain.Interfaces.Services
 {
     public interface IPollService
     {
-        IEnumerable<Poll> Get();
+        IEnumerable<GetPollResponse> Get();
 
-        Poll GetById(int id);
+        GetPollResponse GetById(int id);
 
         Poll Add(Poll poll);
 

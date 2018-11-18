@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PollApp.API.Controllers;
+using PollApp.Domain.DTOs.Poll;
 using PollApp.Domain.Entities;
 using PollApp.Domain.Interfaces.Services;
 using System.Collections.Generic;
@@ -34,8 +35,8 @@ namespace PollApp.Test.API
             var ret = pollController.Get();
 
             var result = Assert.IsType<OkObjectResult>(ret.Result);
-            var value = Assert.IsType<List<Poll>>(result.Value);
-            Assert.Equal(2, value.Count);
+            var value = Assert.IsAssignableFrom<IEnumerable<GetPollResponse>>(result.Value);
+            Assert.Equal(2, value.GetType().GenericTypeArguments.Length);
         }
 
         #endregion
