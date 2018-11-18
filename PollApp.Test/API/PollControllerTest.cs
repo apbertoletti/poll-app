@@ -62,11 +62,25 @@ namespace PollApp.Test.API
         [Fact]
         public void AddTest()
         {
-            //var ret = pollController.Ad();
+            var newPoll = new AddPollRequest()
+            {
+                Poll_Description = "A posição política que você mais se encaixa é:",
+                Options = new List<AddPollOptionRequest>()
+                {
+                    new AddPollOptionRequest() { Option_Description = "Extrema direita" },
+                    new AddPollOptionRequest() { Option_Description = "Direita" },
+                    new AddPollOptionRequest() { Option_Description = "Centro direita" },
+                    new AddPollOptionRequest() { Option_Description = "Centro esquerda" },
+                    new AddPollOptionRequest() { Option_Description = "Esquerda" },
+                    new AddPollOptionRequest() { Option_Description = "Extrema esquerda" },
+                }                  
+            };
 
-            //var result = Assert.IsType<OkObjectResult>(ret.Result);
-            //var value = Assert.IsAssignableFrom<IEnumerable<GetPollResponse>>(result.Value);
-            //Assert.Equal(3, value.ToList().Count);
+            var ret = pollController.Add(newPoll);
+
+            var result = Assert.IsType<OkObjectResult>(ret);
+            var value = Assert.IsType<AddPollResponse>(result.Value);
+            Assert.Equal(4, value.Poll_Id);
         }
 
         #endregion

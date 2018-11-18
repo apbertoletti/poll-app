@@ -10,7 +10,7 @@ namespace PollApp.Domain.Interfaces.Services
 
         GetPollResponse GetById(int id);
 
-        Poll Add(Poll poll);
+        AddPollResponse Add(AddPollRequest poll);
 
         void Remove(int id);
     }

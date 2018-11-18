@@ -1,4 +1,6 @@
-﻿using PollApp.Domain.Entities.Base;
+﻿using System;
+using PollApp.Domain.DTOs.PollOption;
+using PollApp.Domain.Entities.Base;
 
 namespace PollApp.Domain.Entities
 {
@@ -21,6 +23,11 @@ namespace PollApp.Domain.Entities
         public string Description { get; private set; }
 
         public int? Votes { get; private set; }
+
+        #endregion
+
+        #region Methods
+
 
         #endregion
     }

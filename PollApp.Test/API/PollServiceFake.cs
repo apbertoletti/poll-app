@@ -48,9 +48,21 @@ namespace PollApp.Test.API
 
         #region Methods
 
-        public Poll Add(Poll poll)
+        public AddPollResponse Add(AddPollRequest poll)
         {
-            throw new System.NotImplementedException();
+            int nextId = _polls.Max(c => c.ID) + 1;
+
+            var newPoll = new Poll(nextId, poll.Poll_Description, new List<PollOption>());
+
+            var newOptions = new List<PollOption>();
+            for (int i = 1; i <= poll.Options.Count(); i++)
+                newOptions.Add(new PollOption(i * (-1), newPoll, poll.Options.ElementAt(i - 1).Option_Description));
+
+            newPoll.Options.AddRange(newOptions);
+
+            _polls.Add(newPoll);
+
+            return new AddPollResponse() { Poll_Id = newPoll.ID }; 
         }
 
         public IEnumerable<GetPollResponse> Get()
