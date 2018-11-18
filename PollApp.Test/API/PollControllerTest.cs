@@ -37,7 +37,7 @@ namespace PollApp.Test.API
         {
             var ret = pollController.Get();
 
-            var result = Assert.IsType<OkObjectResult>(ret.Result);
+            var result = Assert.IsType<OkObjectResult>(ret);
             var value = Assert.IsAssignableFrom<IEnumerable<GetPollResponse>>(result.Value);
             Assert.Equal(3, value.ToList().Count);
         }
@@ -47,7 +47,7 @@ namespace PollApp.Test.API
         {
             var ret = pollController.GetById(1);
 
-            var result = Assert.IsType<OkObjectResult>(ret.Result);
+            var result = Assert.IsType<OkObjectResult>(ret);
             var value = Assert.IsType<GetPollResponse>(result.Value);
             Assert.Equal(1, value.Poll_Id);
             Assert.Equal("Qual seu prato favorito?", value.Poll_Description);
@@ -57,6 +57,16 @@ namespace PollApp.Test.API
             Assert.Equal("Lazanha", options[0].Option_Description);
             Assert.Equal("Strogonoff", options[1].Option_Description);
             Assert.Equal("Peixe assado", options[2].Option_Description);
+        }
+
+        [Fact]
+        public void AddTest()
+        {
+            //var ret = pollController.Ad();
+
+            //var result = Assert.IsType<OkObjectResult>(ret.Result);
+            //var value = Assert.IsAssignableFrom<IEnumerable<GetPollResponse>>(result.Value);
+            //Assert.Equal(3, value.ToList().Count);
         }
 
         #endregion

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PollApp.Domain.DTOs.Poll;
 using PollApp.Domain.Entities;
 using PollApp.Domain.Interfaces.Services;
 
@@ -31,16 +32,27 @@ namespace PollApp.API.Controllers
         #region Methods
 
         [HttpGet]
-        public ActionResult<IEnumerable<Poll>> Get()
+        public ActionResult Get()
         {
             return Ok(_pollService.Get());
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Poll> GetById(int id)
+        public ActionResult GetById(int id)
         {
             var result = _pollService.GetById(id);
+
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public ActionResult Add([FromBody]AddPollRequest poll)
+        {
+            var result = _pollService.Add(poll);
 
             if (result == null)
                 return NotFound();
