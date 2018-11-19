@@ -9,8 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PollApp.Domain.Interfaces.Repositories;
 using PollApp.Domain.Interfaces.Services;
 using PollApp.Domain.Services;
+using PollApp.Infra.Persistence.Repositories;
 
 namespace PollApp.API
 {
@@ -28,6 +30,7 @@ namespace PollApp.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IPollService, PollService>();
+            services.AddScoped<IPollRepository, PollRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -27,7 +27,7 @@ namespace PollApp.Domain.Entities
         #endregion
 
         #region Methods
-
+        
         #endregion
     }
 }

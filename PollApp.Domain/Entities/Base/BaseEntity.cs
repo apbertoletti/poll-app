@@ -15,6 +15,15 @@
 
         public int ID { get; private set; }
 
-        #endregion        
+        #endregion
+
+        #region Methods
+
+        public void SetNewId(int newId)
+        {
+            ID = newId;
+        }
+
+        #endregion
     }
 }
