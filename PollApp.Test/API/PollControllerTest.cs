@@ -8,15 +8,17 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using System.Linq;
+using PollApp.Domain.Interfaces.Repositories;
 
 namespace PollApp.Test.API
 {
     public class PollControllerTest
     {
-        #region Properties
+        #region Fields
 
-        PollController pollController;
-        IPollService pollService;
+        private PollController pollController;
+        private IPollService pollService;
+        private IPollRepository pollRepository;
 
         #endregion
 
@@ -24,7 +26,8 @@ namespace PollApp.Test.API
 
         public PollControllerTest()
         {
-            pollService = new PollServiceFake();
+            pollRepository = new PollRepositoryFake();
+            pollService = new PollServiceFake(pollRepository);
             pollController = new PollController(pollService);
         }
 
