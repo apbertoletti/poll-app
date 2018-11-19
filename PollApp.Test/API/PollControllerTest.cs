@@ -33,7 +33,7 @@ namespace PollApp.Test.API
         #region Methods
 
         [Fact]
-        public void GetTest()
+        public void Get_Ok_Test()
         {
             var ret = pollController.Get();
 
@@ -43,7 +43,7 @@ namespace PollApp.Test.API
         }
 
         [Fact]
-        public void GetByIdTest()
+        public void GetById_Ok_Test()
         {
             var ret = pollController.GetById(1);
 
@@ -60,7 +60,15 @@ namespace PollApp.Test.API
         }
 
         [Fact]
-        public void AddTest()
+        public void GetById_NotFound_Test()
+        {
+            var ret = pollController.GetById(999);
+
+            Assert.IsType<NotFoundResult>(ret);
+        }
+
+        [Fact]
+        public void Add_Ok_Test()
         {
             string newDescription = "A posição política que você mais se encaixa é:";
             var newOptions = new string[] { "Extrema direita", "Direita", "Centro direita", "Centro esquerda", "Esquerda", "Extrema esquerda" };
@@ -95,13 +103,21 @@ namespace PollApp.Test.API
         }
 
         [Fact]
-        public void RemoveTest()
+        public void Remove_Ok_Test()
         {
             var removeRet = pollController.Remove(1);
             Assert.IsType<NoContentResult>(removeRet);
 
             var getRet = pollController.GetById(1);
             Assert.IsType<NotFoundResult>(getRet);
+        }
+
+        [Fact]
+        public void Remove_NotFound_Test()
+        {
+            var ret = pollController.Remove(999);
+
+            Assert.IsType<NotFoundResult>(ret);
         }
 
         #endregion
