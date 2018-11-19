@@ -45,8 +45,9 @@ namespace PollApp.Domain.Services
             var newPoll = new Poll(nextId, poll.Poll_Description, new List<PollOption>());
 
             var newOptions = new List<PollOption>();
-            for (int i = 1; i <= poll.Options.Count(); i++)
-                newOptions.Add(new PollOption(i * (-1), newPoll, poll.Options.ElementAt(i - 1).Option_Description));
+            
+            for (int i = 1; i <= poll.Options.Length; i++)
+                newOptions.Add(new PollOption(i * (-1), newPoll, poll.Options[i - 1]));
 
             newPoll.Options.AddRange(newOptions);
 

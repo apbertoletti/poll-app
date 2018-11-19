@@ -8,6 +8,6 @@ namespace PollApp.Domain.DTOs.Poll
     {
         public string Poll_Description { get; set; }
 
-        public IEnumerable<AddPollOptionRequest> Options { get; set; }
+        public string[] Options { get; set; }
     }
 }
