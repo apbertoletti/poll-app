@@ -94,6 +94,16 @@ namespace PollApp.Test.API
             Assert.Equal(newOptions[5], options[5].Option_Description);
         }
 
+        [Fact]
+        public void RemoveTest()
+        {
+            var removeRet = pollController.Remove(1);
+            Assert.IsType<NoContentResult>(removeRet);
+
+            var getRet = pollController.GetById(1);
+            Assert.IsType<NotFoundResult>(getRet);
+        }
+
         #endregion
     }
-}
+    }

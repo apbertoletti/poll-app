@@ -68,7 +68,7 @@ namespace PollApp.Domain.Services
 
         public void Remove(int id)
         {
-            throw new System.NotImplementedException();
+            _polls.Remove(_polls.First(c => c.ID == id));
         }
     }
 }

@@ -34,7 +34,7 @@ namespace PollApp.Test.API
                     new PollOption(id: 7, poll: null, description: "Roxo" ),
                     new PollOption(id: 8, poll: null, description: "Vermelho" ),
                 }),
-                new Poll(id: 3, description: "O que iria fazer nesta situação?", pollOptions: new List<PollOption>()
+                new Poll(id: 3, description: "O que você gostaria de fazer nesta situação?", pollOptions: new List<PollOption>()
                 {
                     new PollOption(id: 4, poll: null, description: "Dormir" ),
                     new PollOption(id: 5, poll: null, description: "Gritar" ),
@@ -77,7 +77,7 @@ namespace PollApp.Test.API
 
         public void Remove(int id)
         {
-            throw new System.NotImplementedException();
+            _polls.Remove(_polls.First(c => c.ID == id));
         }
 
         #endregion

@@ -60,6 +60,18 @@ namespace PollApp.API.Controllers
             return Ok(result);
         }
 
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult Remove(int id)
+        {
+            if (_pollService.GetById(id) == null)
+                return NotFound();
+
+            _pollService.Remove(id);
+
+            return NoContent();
+        }
+
         #endregion
     }
 }
