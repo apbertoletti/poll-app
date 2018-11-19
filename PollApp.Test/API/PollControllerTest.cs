@@ -62,25 +62,36 @@ namespace PollApp.Test.API
         [Fact]
         public void AddTest()
         {
+            string newDescription = "A posição política que você mais se encaixa é:";
+            var newOptions = new string[] { "Extrema direita", "Direita", "Centro direita", "Centro esquerda", "Esquerda", "Extrema esquerda" };
+
             var newPoll = new AddPollRequest()
             {
-                Poll_Description = "A posição política que você mais se encaixa é:",
-                Options = new List<AddPollOptionRequest>()
-                {
-                    new AddPollOptionRequest() { Option_Description = "Extrema direita" },
-                    new AddPollOptionRequest() { Option_Description = "Direita" },
-                    new AddPollOptionRequest() { Option_Description = "Centro direita" },
-                    new AddPollOptionRequest() { Option_Description = "Centro esquerda" },
-                    new AddPollOptionRequest() { Option_Description = "Esquerda" },
-                    new AddPollOptionRequest() { Option_Description = "Extrema esquerda" },
-                }                  
+                Poll_Description = newDescription,
+                Options = newOptions
             };
 
-            var ret = pollController.Add(newPoll);
+            var addRet = pollController.Add(newPoll);
 
-            var result = Assert.IsType<OkObjectResult>(ret);
-            var value = Assert.IsType<AddPollResponse>(result.Value);
-            Assert.Equal(4, value.Poll_Id);
+            var addResult = Assert.IsType<OkObjectResult>(addRet);
+            var addValue = Assert.IsType<AddPollResponse>(addResult.Value);
+            Assert.Equal(4, addValue.Poll_Id);
+
+            var getRet = pollController.GetById(4);
+       
+            var getResult = Assert.IsType<OkObjectResult>(getRet);
+            var getValue = Assert.IsType<GetPollResponse>(getResult.Value);
+            Assert.Equal(4, getValue.Poll_Id);
+            Assert.Equal(newDescription, getValue.Poll_Description);
+
+            var options = getValue.Options.ToList();
+            Assert.Equal(6, options.Count);
+            Assert.Equal(newOptions[0], options[0].Option_Description);
+            Assert.Equal(newOptions[1], options[1].Option_Description);
+            Assert.Equal(newOptions[2], options[2].Option_Description);
+            Assert.Equal(newOptions[3], options[3].Option_Description);
+            Assert.Equal(newOptions[4], options[4].Option_Description);
+            Assert.Equal(newOptions[5], options[5].Option_Description);
         }
 
         #endregion
