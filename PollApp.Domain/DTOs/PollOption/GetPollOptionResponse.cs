@@ -5,7 +5,7 @@ namespace PollApp.Domain.DTOs.PollOption
 {
     public class GetPollOptionResponse
     {
-        public int Option_Id { get; set; }
+        public int? Option_Id { get; set; }
 
         public string Option_Description { get; set; }
 

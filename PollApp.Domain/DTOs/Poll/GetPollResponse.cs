@@ -9,7 +9,7 @@ namespace PollApp.Domain.DTOs.Poll
 {
     public class GetPollResponse
     {
-        public int Poll_Id { get; set; }
+        public int? Poll_Id { get; set; }
 
         public string Poll_Description { get; set; }
 
@@ -24,8 +24,9 @@ namespace PollApp.Domain.DTOs.Poll
             {
                 Poll_Id = poll.ID,
                 Poll_Description = poll.Description,
-                Options = poll.Options.ToList().Select(entity => (GetPollOptionResponse)entity)
-            };
+                Options = (poll.Options.ToList().Select(entity => (GetPollOptionResponse)entity))
+                //Options = (poll.Options != null ? poll.Options.ToList().Select(entity => (GetPollOptionResponse)entity) : null)
+            }; 
         }
     }
 }

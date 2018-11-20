@@ -1,5 +1,7 @@
-﻿using PollApp.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using PollApp.Domain.Entities;
 using PollApp.Domain.Interfaces.Repositories;
+using PollApp.Infra.Persistence.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,60 +11,44 @@ namespace PollApp.Infra.Persistence.Repositories
 {
     public class PollRepository : IPollRepository
     {
-        private List<Poll> _polls;
+        private readonly PollAppContext _context;
 
-        public PollRepository()
+        public PollRepository(PollAppContext context)
         {
-            _polls = new List<Poll>()
-            {
-                new Poll(id: 1, description: "Qual seu prato favorito?", pollOptions: new List<PollOption>()
-                {
-                    new PollOption(id: 1, poll: null, description: "Lazanha" ),
-                    new PollOption(id: 2, poll: null, description: "Strogonoff" ),
-                    new PollOption(id: 3, poll: null, description: "Peixe assado" ),
-                }),
-                new Poll(id: 2, description: "Qual sua cor favorita?", pollOptions: new List<PollOption>()
-                {
-                    new PollOption(id: 4, poll: null, description: "Verde" ),
-                    new PollOption(id: 5, poll: null, description: "Azul" ),
-                    new PollOption(id: 6, poll: null, description: "Amarelo" ),
-                    new PollOption(id: 7, poll: null, description: "Roxo" ),
-                    new PollOption(id: 8, poll: null, description: "Vermelho" ),
-                }),
-                new Poll(id: 3, description: "O que iria fazer nesta situação?", pollOptions: new List<PollOption>()
-                {
-                    new PollOption(id: 4, poll: null, description: "Dormir" ),
-                    new PollOption(id: 5, poll: null, description: "Gritar" ),
-                    new PollOption(id: 6, poll: null, description: "Fugir" ),
-                    new PollOption(id: 7, poll: null, description: "Cantar" ),
-                })
-            };
+            _context = context;
         }
 
         public Poll Add(Poll poll)
         {
-            int nextId = _polls.Max(c => c.ID) + 1;
+            SetNullPKs(poll);
 
-            poll.SetNewId(nextId);
+            var x = _context.Polls.Add(poll);           
+            _context.SaveChanges();
 
-            _polls.Add(poll);
-
-            return poll;
+            return x.Entity;
         }
+
+        private void SetNullPKs(Poll poll)
+        {
+            /** Estas alterações nos IDs foram necessárias para que o seu conteúdo
+              * não sobrescrevesse o ID autogerado pelo BD **/
+            poll.SetNewId(null);
+            poll.Options.ForEach(c => c.SetNewId(null));
+        }        
 
         public IEnumerable<Poll> Get()
         {
-            return _polls;
+            return _context.Polls.Include(c => c.Options);
         }
 
         public Poll GetById(int id)
         {
-            return _polls.FirstOrDefault(c => c.ID == id);
+            return _context.Polls.Include(c => c.Options).FirstOrDefault(c => c .ID == id);
         }
 
         public void Remove(int id)
         {
-            _polls.Remove(_polls.First(c => c.ID == id));
+            _context.Polls.Remove(GetById(id));
         }
     }
 }

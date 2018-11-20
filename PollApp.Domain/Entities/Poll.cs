@@ -10,6 +10,11 @@ namespace PollApp.Domain.Entities
     {
         #region Construtor
 
+        protected Poll() : base(-1)
+        {
+
+        }
+
         public Poll(int id, string description, List<PollOption> pollOptions) : base(id)
         {
             Description = description;

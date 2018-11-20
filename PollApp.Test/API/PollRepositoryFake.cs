@@ -41,7 +41,7 @@ namespace PollApp.Test.API
 
         public Poll Add(Poll poll)
         {
-            int nextId = _polls.Max(c => c.ID) + 1;
+            int? nextId = _polls.Max(c => c.ID) + 1;
 
             poll.SetNewId(nextId);
 

@@ -13,13 +13,13 @@
 
         #region Properties
 
-        public int ID { get; private set; }
+        public int? ID { get; private set; }
 
         #endregion
 
         #region Methods
 
-        public void SetNewId(int newId)
+        public void SetNewId(int? newId)
         {
             ID = newId;
         }
