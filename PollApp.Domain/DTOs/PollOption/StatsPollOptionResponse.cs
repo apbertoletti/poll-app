@@ -8,7 +8,7 @@ namespace PollApp.Domain.DTOs.PollOption
     {
         public int? Option_Id { get; set; }
 
-        public int? Qty { get; set; }
+        public int Qty { get; set; }
 
         public static explicit operator StatsPollOptionResponse(Entities.PollOption entity)
         {
@@ -18,7 +18,7 @@ namespace PollApp.Domain.DTOs.PollOption
             return new StatsPollOptionResponse()
             {
                 Option_Id = entity.ID,
-                Qty = (entity.Votes == null ? 0 : entity.Votes)
+                Qty = entity.Votes
             };
         }
     }

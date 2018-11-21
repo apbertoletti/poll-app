@@ -11,7 +11,7 @@ namespace PollApp.Domain.DTOs.PollOption
 
         public string Option_Description { get; set; }
 
-        public int? Option_Votes { get; set; }
+        public int Option_Votes { get; set; }
 
         #endregion
 

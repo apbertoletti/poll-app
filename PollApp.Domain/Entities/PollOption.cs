@@ -17,6 +17,7 @@ namespace PollApp.Domain.Entities
         {
             Poll = poll;
             Description = description;
+            Votes = 0;
         }
 
         #endregion
@@ -27,7 +28,7 @@ namespace PollApp.Domain.Entities
 
         public string Description { get; private set; }
 
-        public int? Votes { get; internal set; }
+        public int Votes { get; internal set; }
 
         #endregion
 
