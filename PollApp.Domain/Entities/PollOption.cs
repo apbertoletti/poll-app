@@ -13,7 +13,7 @@ namespace PollApp.Domain.Entities
 
         }
 
-        public PollOption(int id, Poll poll, string description) : base(id)
+        public PollOption(int? id, Poll poll, string description) : base(id)
         {
             Poll = poll;
             Description = description;
@@ -27,11 +27,27 @@ namespace PollApp.Domain.Entities
 
         public string Description { get; private set; }
 
-        public int? Votes { get; private set; }
+        public int? Votes { get; internal set; }
 
         #endregion
 
         #region Methods
+
+        public static explicit operator PollOption(GetPollOptionResponse entity)
+        {
+            if (entity == null)
+                return null;
+
+            return new PollOption(entity.Option_Id, null, entity.Option_Description)
+            {
+                Votes = entity.Option_Votes
+            };
+        }
+
+        public static explicit operator PollOption(VotePollOptionRequest v)
+        {
+            throw new NotImplementedException();
+        }
 
 
         #endregion

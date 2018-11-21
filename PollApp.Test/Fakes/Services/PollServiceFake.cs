@@ -5,7 +5,7 @@ using PollApp.Domain.Entities;
 using PollApp.Domain.Interfaces.Repositories;
 using PollApp.Domain.Interfaces.Services;
 
-namespace PollApp.Test.API
+namespace PollApp.Test.API.Fakes.Services
 {
     public class PollServiceFake : IPollService
     {

@@ -4,7 +4,7 @@
     {
         #region Methods
 
-        public BaseEntity(int id)
+        public BaseEntity(int? id)
         {
             ID = id;
         }

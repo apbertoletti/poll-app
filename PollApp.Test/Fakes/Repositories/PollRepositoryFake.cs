@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PollApp.Test.API
+namespace PollApp.Test.API.Fakes.Repositories
 {
     public class PollRepositoryFake : IPollRepository
     {

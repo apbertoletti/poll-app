@@ -30,8 +30,13 @@ namespace PollApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddScoped<IPollService, PollService>();
+            services.AddScoped<IPollOptionService, PollOptionService>();
+
             services.AddScoped<IPollRepository, PollRepository>();
+            services.AddScoped<IPollOptionRepository, PollOptionRepository>();
+
             services.AddScoped<PollAppContext, PollAppContext>();
         }
 

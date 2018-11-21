@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PollApp.API.Controllers;
 using PollApp.Domain.DTOs.Poll;
-using PollApp.Domain.DTOs.PollOption;
-using PollApp.Domain.Entities;
 using PollApp.Domain.Interfaces.Services;
-using System;
 using System.Collections.Generic;
 using Xunit;
 using System.Linq;
 using PollApp.Domain.Interfaces.Repositories;
+using PollApp.Test.API.Fakes.Services;
+using PollApp.Test.API.Fakes.Repositories;
 
 namespace PollApp.Test.API
 {
@@ -122,7 +121,7 @@ namespace PollApp.Test.API
 
             Assert.IsType<NotFoundResult>(ret);
         }
-
+       
         #endregion
     }
-    }
+}
