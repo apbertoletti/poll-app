@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PollApp.Infra.Persistence.EF;
 
 namespace PollApp.Infra.Migrations
 {
     [DbContext(typeof(PollAppContext))]
-    partial class PollAppContextModelSnapshot : ModelSnapshot
+    [Migration("20181121233205_Poll-FK-Required")]
+    partial class PollFKRequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -20,7 +20,7 @@ namespace PollApp.Infra.Persistence.EF.Maps
             builder.Property(x => x.Views).HasDefaultValue(0).IsRequired();
 
             //FK
-            builder.HasMany(x => x.Options).WithOne().OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.Options).WithOne().OnDelete(DeleteBehavior.Cascade).IsRequired();
         }
     }
 }
