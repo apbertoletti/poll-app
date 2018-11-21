@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using PollApp.Domain.Entities;
-
-namespace PollApp.Domain.DTOs.PollOption
+﻿namespace PollApp.Domain.DTOs.PollOption
 {
     public class StatsPollOptionResponse
     {

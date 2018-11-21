@@ -1,7 +1,4 @@
 ﻿using PollApp.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PollApp.Domain.Interfaces.Repositories
 {

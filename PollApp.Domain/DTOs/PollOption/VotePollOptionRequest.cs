@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PollApp.Domain.DTOs.PollOption
+﻿namespace PollApp.Domain.DTOs.PollOption
 {
     public class VotePollOptionRequest
     {

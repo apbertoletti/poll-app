@@ -1,6 +1,4 @@
 ﻿using PollApp.Domain.DTOs.PollOption;
-using PollApp.Domain.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

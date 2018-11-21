@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PollApp.Domain.DTOs.Poll;
-using PollApp.Domain.Entities;
 using PollApp.Domain.Interfaces.Services;
 
 namespace PollApp.API.Controllers

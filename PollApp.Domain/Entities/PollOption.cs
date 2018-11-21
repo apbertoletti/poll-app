@@ -1,6 +1,6 @@
-﻿using System;
-using PollApp.Domain.DTOs.PollOption;
+﻿using PollApp.Domain.DTOs.PollOption;
 using PollApp.Domain.Entities.Base;
+using System;
 
 namespace PollApp.Domain.Entities
 {

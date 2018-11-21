@@ -1,5 +1,4 @@
 ﻿using PollApp.Domain.DTOs.Poll;
-using PollApp.Domain.Entities;
 using System.Collections.Generic;
 
 namespace PollApp.Domain.Interfaces.Services

@@ -1,7 +1,4 @@
-﻿using System;
-using PollApp.Domain.Entities;
-
-namespace PollApp.Domain.DTOs.PollOption
+﻿namespace PollApp.Domain.DTOs.PollOption
 {
     public class VotePollOptionResponse
     {

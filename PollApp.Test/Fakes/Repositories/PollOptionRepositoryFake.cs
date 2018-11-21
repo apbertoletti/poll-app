@@ -1,10 +1,8 @@
 ﻿using PollApp.Domain.Entities;
 using PollApp.Domain.Extensions;
 using PollApp.Domain.Interfaces.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PollApp.Test.API.Fakes.Repositories
 {

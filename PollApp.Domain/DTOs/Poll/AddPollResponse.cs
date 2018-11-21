@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PollApp.Domain.DTOs.Poll
+﻿namespace PollApp.Domain.DTOs.Poll
 {
     public class AddPollResponse
     {

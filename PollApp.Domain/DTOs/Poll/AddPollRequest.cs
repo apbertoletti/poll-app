@@ -1,8 +1,4 @@
-﻿using PollApp.Domain.DTOs.PollOption;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace PollApp.Domain.DTOs.Poll
+﻿namespace PollApp.Domain.DTOs.Poll
 {
     public class AddPollRequest
     {

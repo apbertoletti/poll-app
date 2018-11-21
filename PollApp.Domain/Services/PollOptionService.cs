@@ -2,7 +2,6 @@
 using PollApp.Domain.Entities;
 using PollApp.Domain.Interfaces.Repositories;
 using PollApp.Domain.Interfaces.Services;
-using System;
 
 namespace PollApp.Domain.Services
 {

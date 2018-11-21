@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PollApp.Shared
+﻿namespace PollApp.Shared
 {
     public static class Settings
     {

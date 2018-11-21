@@ -5,9 +5,6 @@ using PollApp.Domain.Interfaces.Repositories;
 using PollApp.Domain.Interfaces.Services;
 using PollApp.Test.API.Fakes.Repositories;
 using PollApp.Test.Fakes.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace PollApp.Test.API

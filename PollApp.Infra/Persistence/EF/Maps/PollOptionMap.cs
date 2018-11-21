@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PollApp.Domain.Entities;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PollApp.Infra.Persistence.EF.Maps
 {

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using PollApp.Domain.DTOs.Poll;
+﻿using PollApp.Domain.DTOs.Poll;
 using PollApp.Domain.Entities;
 using PollApp.Domain.Interfaces.Repositories;
 using PollApp.Domain.Interfaces.Services;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PollApp.Domain.Services
 {

@@ -3,10 +3,8 @@ using PollApp.Domain.Entities;
 using PollApp.Domain.Extensions;
 using PollApp.Domain.Interfaces.Repositories;
 using PollApp.Infra.Persistence.EF;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PollApp.Infra.Persistence.Repositories
 {

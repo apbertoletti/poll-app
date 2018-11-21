@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PollApp.API.Controllers;
 using PollApp.Domain.DTOs.Poll;
-using PollApp.Domain.Interfaces.Services;
-using System.Collections.Generic;
-using Xunit;
-using System.Linq;
 using PollApp.Domain.Interfaces.Repositories;
-using PollApp.Test.API.Fakes.Services;
+using PollApp.Domain.Interfaces.Services;
 using PollApp.Test.API.Fakes.Repositories;
+using PollApp.Test.API.Fakes.Services;
+using System.Collections.Generic;
+using System.Linq;
+using Xunit;
 
 namespace PollApp.Test.API
 {

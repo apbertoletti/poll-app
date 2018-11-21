@@ -1,8 +1,5 @@
-﻿using PollApp.Domain.DTOs.Poll;
-using PollApp.Domain.Entities.Base;
-using System;
+﻿using PollApp.Domain.Entities.Base;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PollApp.Domain.Entities
 {
