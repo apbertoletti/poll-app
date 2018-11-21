@@ -18,8 +18,8 @@ namespace PollApp.Infra.Persistence.EF.Maps
             builder.Property(x => x.ID).ValueGeneratedOnAdd();
             builder.Property(x => x.Description).HasMaxLength(200).IsRequired();
 
-            //Ignore columns
-            //builder.Ignore(x => x.Options);
+            //FK
+            builder.HasMany(x => x.Options).WithOne().OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

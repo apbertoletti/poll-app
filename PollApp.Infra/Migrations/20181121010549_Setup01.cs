@@ -26,9 +26,9 @@ namespace PollApp.Infra.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    PollID = table.Column<int>(nullable: true),
                     Description = table.Column<string>(maxLength: 200, nullable: false),
-                    Votes = table.Column<int>(nullable: false, defaultValue: 0)
+                    Votes = table.Column<int>(nullable: false, defaultValue: 0),
+                    PollID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,7 +38,7 @@ namespace PollApp.Infra.Migrations
                         column: x => x.PollID,
                         principalTable: "Poll",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

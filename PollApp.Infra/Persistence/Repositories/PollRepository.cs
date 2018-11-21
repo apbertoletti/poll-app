@@ -49,6 +49,7 @@ namespace PollApp.Infra.Persistence.Repositories
         public void Remove(int id)
         {
             _context.Polls.Remove(GetById(id));
+            _context.SaveChanges();
         }
     }
 }

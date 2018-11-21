@@ -20,7 +20,7 @@ namespace PollApp.Infra.Persistence.EF
         {
             modelBuilder.ApplyConfiguration(new PollMap());
             modelBuilder.ApplyConfiguration(new PollOptionMap());
-            
+
             base.OnModelCreating(modelBuilder);
         }
     }

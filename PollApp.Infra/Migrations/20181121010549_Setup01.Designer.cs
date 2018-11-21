@@ -10,7 +10,7 @@ using PollApp.Infra.Persistence.EF;
 namespace PollApp.Infra.Migrations
 {
     [DbContext(typeof(PollAppContext))]
-    [Migration("20181120181212_Setup01")]
+    [Migration("20181121010549_Setup01")]
     partial class Setup01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,9 +62,10 @@ namespace PollApp.Infra.Migrations
 
             modelBuilder.Entity("PollApp.Domain.Entities.PollOption", b =>
                 {
-                    b.HasOne("PollApp.Domain.Entities.Poll", "Poll")
+                    b.HasOne("PollApp.Domain.Entities.Poll")
                         .WithMany("Options")
-                        .HasForeignKey("PollID");
+                        .HasForeignKey("PollID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

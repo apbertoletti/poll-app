@@ -60,9 +60,10 @@ namespace PollApp.Infra.Migrations
 
             modelBuilder.Entity("PollApp.Domain.Entities.PollOption", b =>
                 {
-                    b.HasOne("PollApp.Domain.Entities.Poll", "Poll")
+                    b.HasOne("PollApp.Domain.Entities.Poll")
                         .WithMany("Options")
-                        .HasForeignKey("PollID");
+                        .HasForeignKey("PollID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
