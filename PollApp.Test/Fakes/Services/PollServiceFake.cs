@@ -51,6 +51,11 @@ namespace PollApp.Test.API.Fakes.Services
             return (GetPollResponse)_pollRepository.GetById(id);
         }
 
+        public void RegisterView(int id)
+        {
+            _pollRepository.RegisterView(id);
+        }
+
         public void Remove(int id)
         {
             _pollRepository.Remove(id);

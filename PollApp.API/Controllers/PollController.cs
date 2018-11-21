@@ -46,6 +46,8 @@ namespace PollApp.API.Controllers
             if (result == null)
                 return NotFound();
 
+            _pollService.RegisterView(id);
+
             return Ok(result);
         }
 

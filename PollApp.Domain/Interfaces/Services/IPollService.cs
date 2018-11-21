@@ -13,5 +13,7 @@ namespace PollApp.Domain.Interfaces.Services
         AddPollResponse Add(AddPollRequest poll);
 
         void Remove(int id);
+
+        void RegisterView(int id);
     }
 }

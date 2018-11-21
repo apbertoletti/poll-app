@@ -17,6 +17,7 @@ namespace PollApp.Infra.Persistence.EF.Maps
             //Other columns
             builder.Property(x => x.ID).ValueGeneratedOnAdd();
             builder.Property(x => x.Description).HasMaxLength(200).IsRequired();
+            builder.Property(x => x.Views).HasDefaultValue(0).IsRequired();
 
             //FK
             builder.HasMany(x => x.Options).WithOne().OnDelete(DeleteBehavior.Cascade);

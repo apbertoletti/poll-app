@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PollApp.Domain.Entities;
+using PollApp.Domain.Extensions;
 using PollApp.Domain.Interfaces.Repositories;
 using PollApp.Infra.Persistence.EF;
 using System;
@@ -49,6 +50,12 @@ namespace PollApp.Infra.Persistence.Repositories
         public void Remove(int id)
         {
             _context.Polls.Remove(GetById(id));
+            _context.SaveChanges();
+        }
+
+        public void RegisterView(int id)
+        {
+            _context.Polls.FirstOrDefault(c => c.ID == id).DoView();
             _context.SaveChanges();
         }
     }

@@ -14,5 +14,7 @@ namespace PollApp.Domain.Interfaces.Repositories
         Poll Add(Poll poll);
 
         void Remove(int id);
+
+        void RegisterView(int id);
     }
 }

@@ -19,6 +19,7 @@ namespace PollApp.Domain.Entities
         {
             Description = description;
             Options = pollOptions;
+            Views = 0;
         }
 
         #endregion
@@ -29,10 +30,12 @@ namespace PollApp.Domain.Entities
 
         public List<PollOption> Options { get; private set; }
 
+        public int Views { get; internal set; }
+
         #endregion
 
         #region Methods
-        
+
         #endregion
     }
 }

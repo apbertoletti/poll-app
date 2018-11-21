@@ -1,4 +1,5 @@
 ﻿using PollApp.Domain.Entities;
+using PollApp.Domain.Extensions;
 using PollApp.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,15 @@ namespace PollApp.Test.API.Fakes.Repositories
                     new PollOption(id: 7, poll: null, description: "Cantar" ),
                 })
             };
+
+            /** Simula duas visualizações no enquete 1 - Qual seu prato favorito **/
+            _polls[0].DoView();
+            _polls[0].DoView();
+
+            /** Simula três visualizações no enquete 3 - O que você iria fazer nesta situação **/
+            _polls[2].DoView();
+            _polls[2].DoView();
+            _polls[2].DoView();
         }
 
         public Poll Add(Poll poll)
@@ -58,6 +68,11 @@ namespace PollApp.Test.API.Fakes.Repositories
         public Poll GetById(int id)
         {
             return _polls.FirstOrDefault(c => c.ID == id);
+        }
+
+        public void RegisterView(int id)
+        {
+            _polls.FirstOrDefault(c => c.ID == id).DoView();
         }
 
         public void Remove(int id)

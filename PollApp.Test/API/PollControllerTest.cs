@@ -120,8 +120,8 @@ namespace PollApp.Test.API
             var ret = pollController.Remove(999);
 
             Assert.IsType<NotFoundResult>(ret);
-        }
-       
+        }     
+
         #endregion
     }
 }
