@@ -32,10 +32,10 @@ namespace PollApp.Test.API.Fakes.Repositories
                 }),
                 new Poll(id: 3, description: "O que iria fazer nesta situação?", pollOptions: new List<PollOption>()
                 {
-                    new PollOption(id: 4, poll: null, description: "Dormir" ),
-                    new PollOption(id: 5, poll: null, description: "Gritar" ),
-                    new PollOption(id: 6, poll: null, description: "Fugir" ),
-                    new PollOption(id: 7, poll: null, description: "Cantar" ),
+                    new PollOption(id: 9, poll: null, description: "Dormir" ),
+                    new PollOption(id: 10, poll: null, description: "Gritar" ),
+                    new PollOption(id: 11, poll: null, description: "Fugir" ),
+                    new PollOption(id: 12, poll: null, description: "Cantar" ),
                 })
             };
 
@@ -47,6 +47,26 @@ namespace PollApp.Test.API.Fakes.Repositories
             _polls[2].DoView();
             _polls[2].DoView();
             _polls[2].DoView();
+
+            /** Simula dois votos no opção 3 - Peixe assado **/
+            _polls[0].Options[2].DoVote();
+            _polls[0].Options[2].DoVote();
+
+            /** Simula dois votos no opção 4 - Verde **/
+            _polls[1].Options[3].DoVote();
+
+            /** Simula dois votos no opção 9 - Dormir**/
+            _polls[2].Options[0].DoVote();
+            _polls[2].Options[0].DoVote();
+
+            /** Simula dois votos no opção 11 - Fugir **/
+            _polls[2].Options[2].DoVote();
+            _polls[2].Options[2].DoVote();
+            _polls[2].Options[2].DoVote();
+            _polls[2].Options[2].DoVote();
+
+            /** Simula dois votos no opção 12 - Cantar **/
+            _polls[2].Options[3].DoVote();
         }
 
         public Poll Add(Poll poll)

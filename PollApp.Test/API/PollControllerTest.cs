@@ -120,7 +120,32 @@ namespace PollApp.Test.API
             var ret = pollController.Remove(999);
 
             Assert.IsType<NotFoundResult>(ret);
-        }     
+        }
+
+        [Fact]
+        public void GetStats_Ok_Test()
+        {
+            var ret = pollController.GetStatsById(3);
+
+            var result = Assert.IsType<OkObjectResult>(ret);
+            var value = Assert.IsType<StatsPollResponse>(result.Value);
+
+            Assert.Equal(3, value.Views);
+            Assert.Equal(4, value.Votes.Count());
+            Assert.Equal(2, value.Votes.ElementAt(0).Qty);
+            Assert.Equal(0, value.Votes.ElementAt(1).Qty);
+            Assert.Equal(4, value.Votes.ElementAt(2).Qty);
+            Assert.Equal(1, value.Votes.ElementAt(3).Qty);
+        }
+
+        [Fact]
+        public void GetStats_NotFound_Test()
+        {
+            var ret = pollController.GetStatsById(999);
+
+            Assert.IsType<NotFoundResult>(ret);
+        }
+
 
         #endregion
     }

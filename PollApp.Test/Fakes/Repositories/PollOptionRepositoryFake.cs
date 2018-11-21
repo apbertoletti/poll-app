@@ -50,7 +50,7 @@ namespace PollApp.Test.API.Fakes.Repositories
 
         public PollOption Vote(PollOption option)
         {
-            return option.DoVote();        
+            return option.DoVote();
         }
     }
 }

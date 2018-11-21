@@ -74,6 +74,16 @@ namespace PollApp.API.Controllers
             return NoContent();
         }
 
+        [HttpGet]
+        [Route("{id}/stats")]    
+        public ActionResult GetStatsById(int id)
+        {
+            if (_pollService.GetById(id) == null)
+                return NotFound();
+
+            return Ok(_pollService.GetStatsById(id));
+        }
+
         #endregion
     }
 }

@@ -41,6 +41,11 @@ namespace PollApp.Domain.Services
             return (GetPollResponse)_pollRepository.GetById(id);
         }
 
+        public StatsPollResponse GetStatsById(int id)
+        {
+            return (StatsPollResponse)_pollRepository.GetById(id);
+        }
+
         public void RegisterView(int id)
         {
             _pollRepository.RegisterView(id);

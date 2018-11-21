@@ -15,5 +15,7 @@ namespace PollApp.Domain.Interfaces.Services
         void Remove(int id);
 
         void RegisterView(int id);
+
+        StatsPollResponse GetStatsById(int id);
     }
 }
