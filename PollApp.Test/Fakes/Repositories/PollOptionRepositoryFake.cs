@@ -31,16 +31,16 @@ namespace PollApp.Test.API.Fakes.Repositories
             };
 
             /** Simula dois votos no opção 3 - Peixe assado **/
-            _options[2].Vote();
-            _options[2].Vote();
+            _options[2].DoVote();
+            _options[2].DoVote();
 
             /** Simula dois votos no opção 4 - Verde **/
-            _options[3].Vote();
+            _options[3].DoVote();
 
             /** Simula dois votos no opção 11 - Fugir **/
-            _options[10].Vote();
-            _options[10].Vote();
-            _options[10].Vote();
+            _options[10].DoVote();
+            _options[10].DoVote();
+            _options[10].DoVote();
         }
 
         public PollOption GetById(int id)
@@ -50,7 +50,7 @@ namespace PollApp.Test.API.Fakes.Repositories
 
         public PollOption Vote(PollOption option)
         {
-            return option.Vote();        
+            return option.DoVote();        
         }
     }
 }

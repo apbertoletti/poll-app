@@ -24,7 +24,7 @@ namespace PollApp.Infra.Persistence.Repositories
         {
             var optionVote = _context.PollOptions.FirstOrDefault(c => c.ID == option.ID);
 
-            optionVote.Vote();
+            optionVote.DoVote();
 
             _context.SaveChanges();
 

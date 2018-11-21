@@ -4,7 +4,7 @@ namespace PollApp.Domain.Extensions
 {
     public static class PollOptionExt
     {
-        public static PollOption Vote(this PollOption option)
+        public static PollOption DoVote(this PollOption option)
         {
             if (option.Votes == null)
                 option.Votes = 1;
