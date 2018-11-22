@@ -4,6 +4,9 @@ using PollApp.Domain.Interfaces.Services;
 
 namespace PollApp.API.Controllers
 {
+    /// <summary>
+    /// API repsonsável por controlar as ações relacionadas as enquantes do aplicativo
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class PollController : ControllerBase
@@ -25,12 +28,22 @@ namespace PollApp.API.Controllers
 
         #region Methods
 
+        /// <summary>
+        /// Retorna a lista de todas as enquetes e suas respectivas opções cadastradas.
+        /// </summary>
+        /// <returns>Lista das enquetes cadastradas</returns>
         [HttpGet]
         public ActionResult Get()
         {
             return Ok(_pollService.Get());
         }
 
+
+        /// <summary>
+        /// Retorna a enquete informada, bem como suas respectivas opções
+        /// </summary>
+        /// <param name="id">ID da enquete a ser consultada</param>
+        /// <returns>Dados da enquete cadastrada</returns>
         [HttpGet]
         [Route("{id}")]
         public ActionResult GetById(int id)
@@ -45,6 +58,11 @@ namespace PollApp.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Adiciona uma nova enquete no banco de dados, bem como suas repectivas opções
+        /// </summary>
+        /// <param name="poll">Dados da enquente a ser adicionada</param>
+        /// <returns>ID da nova enquete adicionada</returns>
         [HttpPost]
         public ActionResult Add([FromBody]AddPollRequest poll)
         {
@@ -56,6 +74,10 @@ namespace PollApp.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Exclui uma enquete do banco de dados, bem como suas repectivas opções
+        /// </summary>
+        /// <param name="id">ID da enquete a ser excluída</param>
         [HttpDelete]
         [Route("{id}")]
         public ActionResult Remove(int id)
@@ -68,6 +90,11 @@ namespace PollApp.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Retorna as estatísticas da enquete informada, bem como a quantitade de votos registrada em cada opção.
+        /// </summary>
+        /// <param name="id">ID da enquete a ser consultada</param>
+        /// <returns>Dados estatísticos da enquete</returns>
         [HttpGet]
         [Route("{id}/stats")]    
         public ActionResult GetStatsById(int id)

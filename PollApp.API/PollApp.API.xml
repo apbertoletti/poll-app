@@ -4,5 +4,56 @@
         <name>PollApp.API</name>
     </assembly>
     <members>
+        <member name="T:PollApp.API.Controllers.PollController">
+            <summary>
+            API repsonsável por controlar as ações relacionadas as enquantes do aplicativo
+            </summary>
+        </member>
+        <member name="M:PollApp.API.Controllers.PollController.Get">
+            <summary>
+            Retorna a lista de todas as enquetes e suas respectivas opções cadastradas.
+            </summary>
+            <returns>Lista das enquetes cadastradas</returns>
+        </member>
+        <member name="M:PollApp.API.Controllers.PollController.GetById(System.Int32)">
+            <summary>
+            Retorna a enquete informada, bem como suas respectivas opções
+            </summary>
+            <param name="id">ID da enquete a ser consultada</param>
+            <returns>Dados da enquete cadastrada</returns>
+        </member>
+        <member name="M:PollApp.API.Controllers.PollController.Add(PollApp.Domain.DTOs.Poll.AddPollRequest)">
+            <summary>
+            Adiciona uma nova enquete no banco de dados, bem como suas repectivas opções
+            </summary>
+            <param name="poll">Dados da enquente a ser adicionada</param>
+            <returns>ID da nova enquete adicionada</returns>
+        </member>
+        <member name="M:PollApp.API.Controllers.PollController.Remove(System.Int32)">
+            <summary>
+            Exclui uma enquete do banco de dados, bem como suas repectivas opções
+            </summary>
+            <param name="id">ID da enquete a ser excluída</param>
+        </member>
+        <member name="M:PollApp.API.Controllers.PollController.GetStatsById(System.Int32)">
+            <summary>
+            Retorna as estatísticas da enquete informada, bem como a quantitade de votos registrada em cada opção.
+            </summary>
+            <param name="id">ID da enquete a ser consultada</param>
+            <returns>Dados estatísticos da enquete</returns>
+        </member>
+        <member name="T:PollApp.API.Controllers.PollOptionController">
+            <summary>
+            API repsonsável por controlar as ações relacionadas as opções de cada enquete do aplicativo
+            </summary>
+        </member>
+        <member name="M:PollApp.API.Controllers.PollOptionController.VoteByOptionId(System.Int32,PollApp.Domain.DTOs.PollOption.VotePollOptionRequest)">
+            <summary>
+            Registra um voto na opção de enquete informada.
+            </summary>
+            <param name="id">ID da opção a ser registrado o voto</param>
+            <param name="option">Dados da opção a ser votada</param>
+            <returns>Dados da opção que recebeu o voto</returns>
+        </member>
     </members>
 </doc>
