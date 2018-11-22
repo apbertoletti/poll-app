@@ -8,8 +8,6 @@
 
         public string Option_Description { get; set; }
 
-        public int Option_Votes { get; set; }
-
         #endregion    
 
         #region Methods
@@ -22,8 +20,7 @@
             return new GetPollOptionResponse()
             {
                 Option_Id = pollOption.ID,
-                Option_Description = pollOption.Description,
-                Option_Votes = pollOption.Votes
+                Option_Description = pollOption.Description
             };
         }
 
