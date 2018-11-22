@@ -9,6 +9,7 @@ using PollApp.Domain.Interfaces.Services;
 using PollApp.Domain.Services;
 using PollApp.Infra.Persistence.EF;
 using PollApp.Infra.Persistence.Repositories;
+using System.Reflection;
 
 namespace PollApp.API
 {
@@ -26,7 +27,23 @@ namespace PollApp.API
         {
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new LowerCaseContractResolver()); 
+                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new LowerCaseContractResolver());
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info()
+                {
+                    Title = "Poll Application API",
+                    Description = "Backend API for Poll Application.",
+                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact()
+                    {
+                        Email = "contato@pollapp.com.br"
+                    }
+                });
+                // integrate xml comments
+                var _xmlDocFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                options.IncludeXmlComments(_xmlDocFileName);
+            });
 
             services.AddScoped<IPollService, PollService>();
             services.AddScoped<IPollOptionService, PollOptionService>();
@@ -46,6 +63,14 @@ namespace PollApp.API
             }
 
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PollApp API v1");
+                c.RoutePrefix = string.Empty;
+
+            });
         }
     }
 }
