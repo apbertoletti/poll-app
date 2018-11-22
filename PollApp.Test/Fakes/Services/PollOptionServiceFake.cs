@@ -30,13 +30,8 @@ namespace PollApp.Test.Fakes.Services
         }
 
         public VotePollOptionResponse Vote(VotePollOptionRequest option)
-        {
-            var optionVote = GetById((int)option.Option_Id);
-
-            if (optionVote == null)
-                return null;
-
-            return (VotePollOptionResponse)_pollOptionRepository.Vote((PollOption)optionVote);
+        {           
+            return (VotePollOptionResponse)_pollOptionRepository.Vote((int)option.Option_Id);
         }
         
         #endregion

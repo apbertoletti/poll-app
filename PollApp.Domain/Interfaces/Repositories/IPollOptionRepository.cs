@@ -6,6 +6,6 @@ namespace PollApp.Domain.Interfaces.Repositories
     {
         PollOption GetById(int id);
 
-        PollOption Vote(PollOption option);
+        PollOption Vote(int id);
     }
 }

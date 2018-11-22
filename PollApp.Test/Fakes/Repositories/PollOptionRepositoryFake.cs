@@ -56,9 +56,9 @@ namespace PollApp.Test.API.Fakes.Repositories
             return _options.FirstOrDefault(c => c.ID == id);
         }
 
-        public PollOption Vote(PollOption option)
+        public PollOption Vote(int id)
         {
-            return option.DoVote();
+            return _options.FirstOrDefault(c => c.ID == id).DoVote();
         } 
 
         #endregion

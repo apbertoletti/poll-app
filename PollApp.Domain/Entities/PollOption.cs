@@ -33,23 +33,7 @@ namespace PollApp.Domain.Entities
         #endregion
 
         #region Methods
-
-        public static explicit operator PollOption(GetPollOptionResponse entity)
-        {
-            if (entity == null)
-                return null;
-
-            return new PollOption(entity.Option_Id, null, entity.Option_Description)
-            {
-                Votes = entity.Option_Votes
-            };
-        }
-
-        public static explicit operator PollOption(VotePollOptionRequest v)
-        {
-            throw new NotImplementedException();
-        }
-
+       
 
         #endregion
     }

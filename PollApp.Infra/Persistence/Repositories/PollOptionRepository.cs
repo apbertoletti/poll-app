@@ -30,9 +30,9 @@ namespace PollApp.Infra.Persistence.Repositories
             return _context.PollOptions.FirstOrDefault(c => c.ID == id);
         }
 
-        public PollOption Vote(PollOption option)
+        public PollOption Vote(int id)
         {
-            var optionVote = _context.PollOptions.FirstOrDefault(c => c.ID == option.ID);
+            var optionVote = _context.PollOptions.FirstOrDefault(c => c.ID == id);
 
             optionVote.DoVote();
 
