@@ -2,7 +2,7 @@
 {
     public class GetPollOptionResponse
     {
-        #region Methods
+        #region Properties
 
         public int? Option_Id { get; set; }
 

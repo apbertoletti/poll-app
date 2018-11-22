@@ -2,9 +2,15 @@
 {
     public class StatsPollOptionResponse
     {
+        #region Properties
+
         public int? Option_Id { get; set; }
 
         public int Qty { get; set; }
+
+        #endregion
+
+        #region Methods
 
         public static explicit operator StatsPollOptionResponse(Entities.PollOption entity)
         {
@@ -17,5 +23,7 @@
                 Qty = entity.Votes
             };
         }
+
+        #endregion
     }
 }

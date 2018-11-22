@@ -7,7 +7,13 @@ namespace PollApp.API.Controllers
     [ApiController]
     public class PollOptionController : ControllerBase
     {
+        #region Fields
+
         private IPollOptionService _pollOptionService;
+
+        #endregion
+
+        #region Methods
 
         public PollOptionController(IPollOptionService pollOptionService)
         {
@@ -25,5 +31,7 @@ namespace PollApp.API.Controllers
 
             return Ok(_pollOptionService.Vote((VotePollOptionRequest)optionVote));
         }
+
+        #endregion
     }
 }

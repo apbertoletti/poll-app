@@ -10,12 +10,22 @@ namespace PollApp.Infra.Persistence.Repositories
 {
     public class PollRepository : IPollRepository
     {
+        #region Fields
+
         private readonly PollAppContext _context;
+
+        #endregion
+
+        #region Constructors
 
         public PollRepository(PollAppContext context)
         {
             _context = context;
         }
+
+        #endregion
+
+        #region Methods
 
         public Poll Add(Poll poll)
         {
@@ -56,5 +66,7 @@ namespace PollApp.Infra.Persistence.Repositories
             _context.Polls.FirstOrDefault(c => c.ID == id).DoView();
             _context.SaveChanges();
         }
+
+        #endregion
     }
 }

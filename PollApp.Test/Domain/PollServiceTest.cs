@@ -8,14 +8,24 @@ namespace PollApp.Test.Domain
 {
     public class PollServiceTest
     {
+        #region Fields
+
         private IPollService _pollService;
         private IPollRepository _pollRepository;
+
+        #endregion
+
+        #region Constructor
 
         public PollServiceTest()
         {
             _pollRepository = new PollRepositoryFake();
             _pollService = new PollServiceFake(_pollRepository);
         }
+
+        #endregion
+
+        #region Methods
 
         [Fact]
         public void RegisterView_Test()
@@ -30,6 +40,8 @@ namespace PollApp.Test.Domain
 
             Assert.Equal(3, viewsBefore);
             Assert.Equal(4, viewsAfter);
-        }
+        } 
+
+        #endregion
     }
 }

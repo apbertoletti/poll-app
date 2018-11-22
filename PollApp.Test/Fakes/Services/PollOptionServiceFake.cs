@@ -7,16 +7,26 @@ namespace PollApp.Test.Fakes.Services
 {
     public class PollOptionServiceFake : IPollOptionService
     {
+        #region Fields
+
         private IPollOptionRepository _pollOptionRepository;
+
+        #endregion
+
+        #region Constructors
 
         public PollOptionServiceFake(IPollOptionRepository pollOptionRepository)
         {
             _pollOptionRepository = pollOptionRepository;
         }
 
+        #endregion
+
+        #region Methods
+
         public GetPollOptionResponse GetById(int id)
         {
-            return (GetPollOptionResponse)_pollOptionRepository.GetById(id);    
+            return (GetPollOptionResponse)_pollOptionRepository.GetById(id);
         }
 
         public VotePollOptionResponse Vote(VotePollOptionRequest option)
@@ -28,5 +38,7 @@ namespace PollApp.Test.Fakes.Services
 
             return (VotePollOptionResponse)_pollOptionRepository.Vote((PollOption)optionVote);
         }
+        
+        #endregion
     }
 }

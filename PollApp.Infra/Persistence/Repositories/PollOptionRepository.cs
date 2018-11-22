@@ -8,12 +8,22 @@ namespace PollApp.Infra.Persistence.Repositories
 {
     public class PollOptionRepository : IPollOptionRepository
     {
+        #region Fields
+
         private readonly PollAppContext _context;
+
+        #endregion
+
+        #region Constructors
 
         public PollOptionRepository(PollAppContext context)
         {
             _context = context;
         }
+
+        #endregion
+
+        #region Methods
 
         public PollOption GetById(int id)
         {
@@ -30,5 +40,7 @@ namespace PollApp.Infra.Persistence.Repositories
 
             return optionVote;
         }
+
+        #endregion
     }
 }

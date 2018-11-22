@@ -8,7 +8,13 @@ namespace PollApp.Test.API.Fakes.Repositories
 {
     public class PollOptionRepositoryFake : IPollOptionRepository
     {
+        #region Fields
+
         private List<PollOption> _options;
+
+        #endregion
+
+        #region Constructors
 
         public PollOptionRepositoryFake()
         {
@@ -41,6 +47,10 @@ namespace PollApp.Test.API.Fakes.Repositories
             _options[10].DoVote();
         }
 
+        #endregion
+
+        #region Methods
+
         public PollOption GetById(int id)
         {
             return _options.FirstOrDefault(c => c.ID == id);
@@ -49,6 +59,8 @@ namespace PollApp.Test.API.Fakes.Repositories
         public PollOption Vote(PollOption option)
         {
             return option.DoVote();
-        }
+        } 
+
+        #endregion
     }
 }

@@ -8,7 +8,13 @@ namespace PollApp.Test.API.Fakes.Repositories
 {
     public class PollRepositoryFake : IPollRepository
     {
+        #region Fields
+
         private List<Poll> _polls;
+
+        #endregion
+
+        #region Constructors
 
         public PollRepositoryFake()
         {
@@ -67,6 +73,10 @@ namespace PollApp.Test.API.Fakes.Repositories
             _polls[2].Options[3].DoVote();
         }
 
+        #endregion
+
+        #region Methods
+
         public Poll Add(Poll poll)
         {
             int? nextId = _polls.Max(c => c.ID) + 1;
@@ -97,5 +107,7 @@ namespace PollApp.Test.API.Fakes.Repositories
         {
             _polls.Remove(_polls.First(c => c.ID == id));
         }
+
+        #endregion
     }
 }

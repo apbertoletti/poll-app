@@ -7,11 +7,17 @@ namespace PollApp.Domain.DTOs.Poll
 {
     public class GetPollResponse
     {
+        #region Properties
+
         public int? Poll_Id { get; set; }
 
         public string Poll_Description { get; set; }
 
         public IEnumerable<GetPollOptionResponse> Options { get; set; }
+
+        #endregion
+
+        #region Methods
 
         public static explicit operator GetPollResponse(Entities.Poll poll)
         {
@@ -24,7 +30,9 @@ namespace PollApp.Domain.DTOs.Poll
                 Poll_Description = poll.Description,
                 Options = (poll.Options.ToList().Select(entity => (GetPollOptionResponse)entity))
                 //Options = (poll.Options != null ? poll.Options.ToList().Select(entity => (GetPollOptionResponse)entity) : null)
-            }; 
+            };
         }
+
+        #endregion
     }
 }
