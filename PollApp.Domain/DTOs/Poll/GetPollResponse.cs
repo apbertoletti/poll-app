@@ -29,7 +29,6 @@ namespace PollApp.Domain.DTOs.Poll
                 Poll_Id = poll.ID,
                 Poll_Description = poll.Description,
                 Options = (poll.Options.ToList().Select(entity => (GetPollOptionResponse)entity))
-                //Options = (poll.Options != null ? poll.Options.ToList().Select(entity => (GetPollOptionResponse)entity) : null)
             };
         }
 
