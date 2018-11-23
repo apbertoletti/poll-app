@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PollApp.API.Controllers;
 using PollApp.Domain.DTOs.Poll;
+using PollApp.Domain.DTOs.PollOption;
 using PollApp.Domain.Interfaces.Repositories;
 using PollApp.Domain.Interfaces.Services;
 using PollApp.Test.API.Fakes.Repositories;
 using PollApp.Test.API.Fakes.Services;
+using PollApp.Test.Fakes.Services;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -17,7 +19,9 @@ namespace PollApp.Test.API
 
         private PollController pollController;
         private IPollService pollService;
+        private IPollOptionService pollOptionService;
         private IPollRepository pollRepository;
+        private IPollOptionRepository pollOptionRepository;
 
         #endregion
 
@@ -27,7 +31,9 @@ namespace PollApp.Test.API
         {
             pollRepository = new PollRepositoryFake();
             pollService = new PollServiceFake(pollRepository);
-            pollController = new PollController(pollService);
+            pollOptionRepository = new PollOptionRepositoryFake();
+            pollOptionService = new PollOptionServiceFake(pollOptionRepository);
+            pollController = new PollController(pollService, pollOptionService);
         }
 
         #endregion
@@ -146,6 +152,45 @@ namespace PollApp.Test.API
             Assert.IsType<NotFoundResult>(ret);
         }
 
+        [Fact]
+        public void VoteByOptionId_Ok_Test()
+        {
+            var ret = pollController.VoteByOptionId(1, new VotePollOptionRequest() { Option_Id = 3 });
+
+            var result = Assert.IsType<OkObjectResult>(ret);
+            var value = Assert.IsType<VotePollOptionResponse>(result.Value);
+            Assert.Equal(3, value.Option_Id);
+            Assert.Equal("Peixe assado", value.Option_Description);
+            Assert.Equal(3, value.Option_Votes);
+        }
+
+        [Fact]
+        public void VoteByOptionId_PollNotFound_Test()
+        {
+            var ret = pollController.VoteByOptionId(999, new VotePollOptionRequest() { Option_Id = 3 });
+
+            var result = Assert.IsType<NotFoundObjectResult>(ret);
+            Assert.Equal("Enquete (id=999) não encontrada", result.Value);
+        }
+
+
+        [Fact]
+        public void VoteByOptionId_OptionNotFound_Test()
+        {
+            var ret = pollController.VoteByOptionId(2, new VotePollOptionRequest() { Option_Id = 999 });
+
+            var result = Assert.IsType<NotFoundObjectResult>(ret);
+            Assert.Equal("Opção (id=999) não encontrada", result.Value);
+        }
+
+        [Fact]
+        public void VoteByOptionId_OptionNotBelongPoll_Test()
+        {
+            var ret = pollController.VoteByOptionId(2, new VotePollOptionRequest() { Option_Id = 10 });
+
+            var result = Assert.IsType<NotFoundObjectResult>(ret);
+            Assert.Equal("Esta opção (id=10) não pertence a esta enquete (id=2)", result.Value);
+        }
 
         #endregion
     }

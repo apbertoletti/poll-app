@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PollApp.Domain.DTOs.Poll;
+using PollApp.Domain.DTOs.PollOption;
 using PollApp.Domain.Interfaces.Services;
+using System.Linq;
 
 namespace PollApp.API.Controllers
 {
@@ -15,13 +17,16 @@ namespace PollApp.API.Controllers
 
         IPollService _pollService;
 
+        IPollOptionService _pollOptionService;
+
         #endregion
 
         #region Constructors
 
-        public PollController(IPollService pollService)
+        public PollController(IPollService pollService, IPollOptionService pollOptionService)
         {
             _pollService = pollService;
+            _pollOptionService = pollOptionService;
         }
 
         #endregion
@@ -88,6 +93,32 @@ namespace PollApp.API.Controllers
             _pollService.Remove(id);
 
             return NoContent();
+        }
+
+        /// <summary>
+        /// Registra um voto na opção de enquete informada.
+        /// </summary>
+        /// <param name="id">ID da enquete a ser votada</param>
+        /// <param name="option">Dados da opção a ser votada</param>
+        /// <returns>Dados da opção que recebeu o voto</returns>
+        [HttpPost()]
+        [Route("{id}/vote")]
+        public ActionResult VoteByOptionId(int id, [FromBody]VotePollOptionRequest option)
+        {
+            var poll = _pollService.GetById(id);
+
+            if (poll == null)
+                return NotFound($"Enquete (id={id}) não encontrada");
+
+            var optionVote = _pollOptionService.GetById((int)option.Option_Id);
+
+            if (optionVote == null)
+                return NotFound($"Opção (id={option.Option_Id}) não encontrada");
+
+            if (!poll.Options.Any(c => c.Option_Id == optionVote.Option_Id))
+                return NotFound($"Esta opção (id={option.Option_Id}) não pertence a esta enquete (id={id})");
+
+            return Ok(_pollOptionService.Vote((VotePollOptionRequest)optionVote));
         }
 
         /// <summary>

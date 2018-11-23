@@ -35,25 +35,20 @@
             </summary>
             <param name="id">ID da enquete a ser excluída</param>
         </member>
+        <member name="M:PollApp.API.Controllers.PollController.VoteByOptionId(System.Int32,PollApp.Domain.DTOs.PollOption.VotePollOptionRequest)">
+            <summary>
+            Registra um voto na opção de enquete informada.
+            </summary>
+            <param name="id">ID da enquete a ser votada</param>
+            <param name="option">Dados da opção a ser votada</param>
+            <returns>Dados da opção que recebeu o voto</returns>
+        </member>
         <member name="M:PollApp.API.Controllers.PollController.GetStatsById(System.Int32)">
             <summary>
             Retorna as estatísticas da enquete informada, bem como a quantitade de votos registrada em cada opção.
             </summary>
             <param name="id">ID da enquete a ser consultada</param>
             <returns>Dados estatísticos da enquete</returns>
-        </member>
-        <member name="T:PollApp.API.Controllers.PollOptionController">
-            <summary>
-            API repsonsável por controlar as ações relacionadas as opções de cada enquete do aplicativo
-            </summary>
-        </member>
-        <member name="M:PollApp.API.Controllers.PollOptionController.VoteByOptionId(System.Int32,PollApp.Domain.DTOs.PollOption.VotePollOptionRequest)">
-            <summary>
-            Registra um voto na opção de enquete informada.
-            </summary>
-            <param name="id">ID da opção a ser registrado o voto</param>
-            <param name="option">Dados da opção a ser votada</param>
-            <returns>Dados da opção que recebeu o voto</returns>
         </member>
     </members>
 </doc>
