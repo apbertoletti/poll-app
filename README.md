@@ -12,7 +12,7 @@ Sistema de gerenciamento de enquetes e votações eletrônica.
 
 ### Instalação
 
- 1. Descompactar o arquivo PollApp.zip 
+ 1. Clonar o projeto em sua máquina (ou baixar o zip)
  2. Abrir o arquivo PollApp.sln na IDE Visual Studio 
  4. Abrir a classe Settings.cs do projeto "PollApp.Shared" e editar nela a propriedade ConnectionString, apontando para a instância de SQL Server que será utilizada na aplicação.
 ```
